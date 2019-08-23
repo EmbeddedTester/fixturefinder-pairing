@@ -1,2 +1,2 @@
 # fixturefinder-pairing
-Repo for the pairing task at CAST 2018
+Repo for TestBash Germany 2019
