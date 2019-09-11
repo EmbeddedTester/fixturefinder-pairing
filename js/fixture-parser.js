@@ -16,7 +16,7 @@ var FixtureParser = function() {
 
     var preprocessFixtures = function(fixtures) {
         $.each(fixtures, function(index, fixture) {
-            if (fixture.kickOff.date < '2018-07-01') {
+            if (fixture.kickOff.date < '2019-08-18') {
                 if (fixture.kickOff.status === 'FULL_TIME') {
                     fixture.score.homeGoals = 2;
                     fixture.score.awayGoals = 1;
@@ -31,7 +31,7 @@ var FixtureParser = function() {
         listElement = listElement + '<td class="competition"><div class="flag flag-' + fixture.country + '"></div>' + fixture.competition + '</td>';
         listElement = listElement + '<td class="kickOffDate" ><small>' + getLocalKickOffTime(fixture.kickOff.date, fixture.kickOff.time) + '</small></td>';
         listElement = listElement + '<td class="home team"><strong>' + fixture.homeTeam + '</strong></td>';
-        listElement = listElement + '<td class="score">' + fixture.score.homeGoals + ':' + fixture.score.awayGoals + '</td>';
+        listElement = listElement + '<td class="score">' + fixture.score.awayGoals + ':' + fixture.score.homeGoals + '</td>';
         listElement = listElement + '<td class="away team"><strong>' + fixture.awayTeam + '</strong></td>';
         listElement = listElement + '</tr>';
         return listElement;
@@ -43,7 +43,7 @@ var FixtureParser = function() {
             $('.fixtures .fixture').remove();
             $('.fixtures .numberOfFixtures').text(fixtures.length + ' ' + localString);
             fixtures = preprocessFixtures(fixtures);
-            $.each(fixtures, function(index, fixture) {
+            $.each(fixtures.length>=2?fixtures.slice(0, fixtures.length-1):fixtures, function(index, fixture) {
                 $('.fixtures .table').append(getFixtureAsHTMLElement(fixture, index));
             });
 
